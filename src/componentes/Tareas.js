@@ -1,20 +1,25 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckSquare, faEdit, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faSquare } from '@fortawesome/free-regular-svg-icons';
 
-const Tareas = ({ tarea }) => {
+const Tareas = ({ tarea, toggleCompletada }) => {
     const [editandoTarea, setTarea] = useState(false);
     const [nuevaTarea, setNUevaTarea] = useState(tarea.texto);
 
     // const
-    const handleSubmit = (e) =>{
+    const handleSubmit = (e) => {
         e.preventDefault();
         setTarea(false);
     }
+
     return (
         <li className='lista-tareas__tarea'>
-            <FontAwesomeIcon icon={faCheckSquare}
-                className='lista-tareas__icono lista-tareas__icono-check' />
+            <FontAwesomeIcon
+                icon={tarea.completada ? faCheckSquare : faSquare}
+                className='lista-tareas__icono lista-tareas__icono-check'
+                onClick={()=>toggleCompletada(tarea.id)}
+            />
             <div>
                 {editandoTarea === true ?
                     <form action='' className='formulario-editar-tarea' onSubmit={handleSubmit}>
@@ -22,7 +27,7 @@ const Tareas = ({ tarea }) => {
                             type='text'
                             className='formulario-editar-tarea__input '
                             value={nuevaTarea}
-                            onChange={(e)=>setNUevaTarea(e.target.value)}
+                            onChange={(e) => setNUevaTarea(e.target.value)}
                         />
                         <button
                             type='submit'
@@ -37,11 +42,11 @@ const Tareas = ({ tarea }) => {
             <div className='lista-tareas__contenedor-botones'>
                 <FontAwesomeIcon icon={faEdit}
                     className='lista-tareas__icono lista-tareas__icono-accion'
-                    onClick={()=>setTarea(!editandoTarea)} />
+                    onClick={() => setTarea(!editandoTarea)} />
 
                 <FontAwesomeIcon icon={faTimes}
                     className='lista-tareas__icono lista-tareas__icono-accion'
-                    onClick={()=>'hola'} />
+                    onClick={() => 'hola'} />
             </div>
         </li>
     );

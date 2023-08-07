@@ -7,16 +7,16 @@ import ListaTareas from './componentes/ListaTareas';
 const App= () => {
   const [tareas, cambiarTareas] = useState(
     [
-        // {
-        //     id:1,
-        //     texto:'laavr la ropa',
-        //     completada: false,
-        // },
-        // {
-        //     id: 2,
-        //     texto: 'grabar tutorial',
-        //     completada: false,
-        // },
+        {
+            id:1,
+            texto:'lavar la ropa',
+            completada: false,
+        },
+        {
+            id: 2,
+            texto: 'grabar tutorial',
+            completada: false,
+        },
     ],
   );
 
@@ -24,7 +24,10 @@ const App= () => {
     <div className="contenedor">
       <Header/>
       <FormularioTareas tareas={tareas} cambiarTareas={cambiarTareas} />
-      <ListaTareas tareas={tareas}/>
+      <ListaTareas 
+        tareas={tareas}
+        cambiarTareas={cambiarTareas}
+      />
     </div>
   );
 }
