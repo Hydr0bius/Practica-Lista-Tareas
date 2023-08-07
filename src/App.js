@@ -6,14 +6,19 @@ import ListaTareas from './componentes/ListaTareas';
 
 const App= () => {
   const [tareas, cambiarTareas] = useState([]);
+  const [mostrarCompletadas, setMostrarCompletadas] = useState (false);
 
   return (
     <div className="contenedor">
-      <Header/>
+      <Header 
+        mostrarCompletadas={mostrarCompletadas} 
+        setMostrarCompletadas={setMostrarCompletadas}
+      />
       <FormularioTareas tareas={tareas} cambiarTareas={cambiarTareas} />
       <ListaTareas 
         tareas={tareas}
         cambiarTareas={cambiarTareas}
+        mostrarCompletadas = {mostrarCompletadas}
       />
     </div>
   );
