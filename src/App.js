@@ -5,20 +5,7 @@ import FormularioTareas from './componentes/formularioTareas';
 import ListaTareas from './componentes/ListaTareas';
 
 const App= () => {
-  const [tareas, cambiarTareas] = useState(
-    [
-        {
-            id:1,
-            texto:'lavar la ropa',
-            completada: false,
-        },
-        {
-            id: 2,
-            texto: 'grabar tutorial',
-            completada: false,
-        },
-    ],
-  );
+  const [tareas, cambiarTareas] = useState([]);
 
   return (
     <div className="contenedor">
